@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./output.css">
 </head>
-    <style>
+<style>
   #themeSelector{
     width: 100px;
   }
@@ -58,6 +58,7 @@
   <option value="light">Light</option>
   <option value="dark">Dark</option>
   <option value="abyss">Abyss</option>
+  <option value="lemonade">lemonade</option>
 </select>
     <a class="btn">Button</a>
   </div>
@@ -237,22 +238,23 @@
 
   const html = document.documentElement;
   const themeSelector = document.getElementById('themeSelector');
-
+  const themeSelector1 = document.getElementById('themeSelector1');
   // Load saved theme
   const savedTheme = localStorage.getItem('theme') || 'light';
   html.setAttribute('data-theme', savedTheme);
   themeSelector.value = savedTheme;
-
+  
   // Update theme when dropdown changes
   themeSelector.addEventListener('change', () => {
     const selectedTheme = themeSelector.value;
     html.setAttribute('data-theme', selectedTheme);
     localStorage.setItem('theme', selectedTheme);
   });
-
-
-
-
+  
+  
+  
+  
+  themeSelector=themeSelector1;
 
 </script>
 </body>
