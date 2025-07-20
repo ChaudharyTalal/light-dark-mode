@@ -48,7 +48,12 @@
     </ul>
   </div>
   <div class="navbar-end gap-2">
-    <input  type="checkbox" value="dark" class="toggle theme-controller" id="theme" />
+    <!-- <input  type="checkbox" value="dark" class="toggle theme-controller" id="theme1" /> -->
+    <select id="themeSelector" class="select select-bordered w-[100px] ">
+  <option value="light">Light</option>
+  <option value="dark">Dark</option>
+  <option value="abyss">Abyss</option>
+</select>
     <a class="btn">Button</a>
   </div>
 </div>
@@ -222,30 +227,30 @@
     <div class="stat-desc text-secondary">31 tasks remaining</div>
   </div>
 </div>
-    <input  type="checkbox" value="abyss" class="toggle theme-controller" id="theme" />
-
+  <select id="themeSelector" class="select select-bordered w-[100px] ">
+  <option value="light">Light</option>
+  <option value="dark">Dark</option>
+  <option value="abyss">Abyss</option>
+</select>
 <script>
 
-  const checkbox = document.getElementById('theme');
   const html = document.documentElement;
+  const themeSelector = document.getElementById('themeSelector');
 
-  // Load saved theme from localStorage
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    html.setAttribute('data-theme', savedTheme);
-    checkbox.checked = savedTheme !== 'light'; // Assume light is default
-  }
+  // Load saved theme
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  html.setAttribute('data-theme', savedTheme);
+  themeSelector.value = savedTheme;
 
-  // Toggle and save theme
-  checkbox.addEventListener('change', function () {
-    if (checkbox.checked) {
-      html.setAttribute('data-theme', 'dark'); // Or your dark theme
-      localStorage.setItem('theme', 'dark');
-    } else {
-      html.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light');
-    }
+  // Update theme when dropdown changes
+  themeSelector.addEventListener('change', () => {
+    const selectedTheme = themeSelector.value;
+    html.setAttribute('data-theme', selectedTheme);
+    localStorage.setItem('theme', selectedTheme);
   });
+
+
+
 
 
 </script>
